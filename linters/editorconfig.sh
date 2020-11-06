@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-docker run --rm -v $(pwd):/data:ro /data alpine:latest ls -al /data
+docker run --rm -v $(pwd):/data:ro alpine:latest ls -al /data
