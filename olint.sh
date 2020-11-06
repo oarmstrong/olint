@@ -27,15 +27,16 @@ fi
 set +e
 failed=n
 
-# always lint editorconfig
+# required lints
 lint editorconfig || failed=y
 
 # conditional lints
-
 if [[ $(find -name '*.tf' -printf 'OK' -quit) == OK ]]; then lint terraform || failed=y; fi
 if [[ $(find -name '*.py' -printf 'OK' -quit) == OK ]]; then lint python || failed=y; fi
-# etc...
 
+# if there were any failures exit 127
 set -e
+[[ $failed == y ]] && exit 127
 
-echo Failed: $failed
+# ensure we exit 0 if all good
+exit 0
