@@ -1,0 +1,13 @@
+name: olint
+description: Run the linters for a particular language
+
+inputs:
+  lang:
+    description: Language to lint
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/linters/${{ inputs.lang }}.sh
+      shell: bash
