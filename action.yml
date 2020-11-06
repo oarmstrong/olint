@@ -9,7 +9,5 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ls -al ${{ github.action_path }}/linters/${{ inputs.lang }}.sh
-      shell: bash
     - run: ${{ github.action_path }}/linters/${{ inputs.lang }}.sh
       shell: bash
