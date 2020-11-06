@@ -6,20 +6,36 @@ readonly olint_dir=/tmp/olint
 readonly olint_tag=v1
 readonly olint_repo=https://github.com/oarmstrong/olint.git
 
+lint() {
+	echo "Linting: $1"
+	$olint_dir/linters/$1.sh
+	return $?
+}
+
 if [[ -d $olint_dir ]]; then
 	pushd $olint_dir >/dev/null
 	git pull --quiet --force --tags origin master
 	git checkout --quiet $olint_tag
-	echo "Running linters: $(git rev-parse HEAD)"
+	echo "olint version: $(git rev-parse HEAD)"
+	echo
 	popd >/dev/null
 else
 	git clone --branch $olint_tag $olint_repo $olint_dir
 fi
 
-[[ ! -f .olintrc ]] && echo 'No olintrc found' && exit 1
+# allow failures so we perform all lints
+set +e
+failed=n
 
-while read -r language; do
-	echo
-	echo Linting: $language
-	$olint_dir/linters/$language.sh
-done <.olintrc
+# always lint editorconfig
+lint editorconfig || failed=y
+
+# conditional lints
+
+if [[ $(find -name '*.tf' -printf 'OK' -quit) == OK ]]; then lint terraform || failed=y; fi
+if [[ $(find -name '*.py' -printf 'OK' -quit) == OK ]]; then lint python || failed=y; fi
+# etc...
+
+set -e
+
+echo Failed: $failed
