@@ -2,4 +2,5 @@
 
 set -euo pipefail
 
-docker run --rm --volume=$PWD:/check mstruebing/editorconfig-checker
+echo 'editorconfig'
+docker run --rm --volume=$PWD:/check:ro mstruebing/editorconfig-checker
