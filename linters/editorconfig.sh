@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-docker run --rm alpine:latest echo Hello world
+docker run --rm alpine:latest -v $(pwd):/data:ro ls -al /data
