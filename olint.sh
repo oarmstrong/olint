@@ -25,7 +25,7 @@ download_linters() {
 	fi
 }
 
-#download_linters
+download_linters
 
 # allow failures so we perform all lints
 set +e
