@@ -3,6 +3,10 @@
 # yamllint disable-line rule:truthy
 on:
   push:
+    branches:
+      - master
+    tags-ignore:
+      - *
   pull_request:
     branches:
       - master
