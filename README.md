@@ -75,6 +75,12 @@ jobs:
       - uses: oarmstrong/olint@v1
 ```
 
+## Linters
+
+TODO
+
+list of linters used.
+
 ## Maintainers
 
 - [@oarmstrong](https://github.com/oarmstrong)
