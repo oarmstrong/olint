@@ -1,13 +1,16 @@
+---
+
+# yamllint disable-line rule:truthy
 on:
   push:
   pull_request:
     branches:
-    - master
+      - master
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     name: Lint everything.
     steps:
-    - uses: actions/checkout@v2
-    - uses: oarmstrong/olint@v1
+      - uses: actions/checkout@v2
+      - uses: oarmstrong/olint@v1
