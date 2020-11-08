@@ -75,7 +75,7 @@ jobs:
 
 ## Maintainers
 
-- @oarmstrong
+- [@oarmstrong](https://github.com/oarmstrong)
 
 ## Contributing
 
