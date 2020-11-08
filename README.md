@@ -1,5 +1,7 @@
 # olint
 
+![CI](https://github.com/oarmstrong/olint/workflows/CI/badge.svg)
+
 `olint` is a better [super-linter](https://github.com/github/super-linter).
 
 Linting all the code in your repository is a well-known best practice.
