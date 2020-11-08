@@ -20,8 +20,7 @@ TODO
 
 ## Install
 
-The only requirement is the `olint.sh` script, `bash`, `git` and `docker`. The
-script will download all linters and dependencies itself.
+The only requirement is the `olint.sh` script, `bash`, `git` and `docker`.
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/oarmstrong/olint/master/olint.sh -o ~/.local/bin/olint
@@ -35,6 +34,11 @@ The linter can be run locally on your project as well as via your CI system.
 GitHub actions has been documented here but this should be useable by other CI
 systems as long as it allows for the running of docker containers.
 
+`olint` will clone itself to `/tmp/olint` when it runs to ensure that it always
+runs with the latest available configuration for that version. Don't worry,
+breaking changes will always result in a version bump; your CI pipelines won't
+suddenly break due to a breaking change in `olint`.
+
 ### CLI
 
 There are no options available. `olint` will recursively lint all files that it
@@ -42,14 +46,19 @@ recognised the extension for in the current directory.
 
 ```bash
 $ olint
-[...]
+olint version: 4f47e2f45954aca3fbdb5b36fbdfb6ccc4405639
+
 Linting: editorconfig
 Linting: markdown
+Linting: shell
 Linting: yaml
-[...]
 ```
 
 ### GitHub Actions
+
+Major version tags (such as `v1`) are **mutable** and will always point to the
+latest version in that series so that GitHub actions configuration only needs
+to be updated when a breaking change has caused a new version to be published.
 
 ```yaml
 ---

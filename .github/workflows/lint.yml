@@ -14,7 +14,7 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Lint everything.
+    name: Lint everything
     steps:
       - uses: actions/checkout@v2
       - uses: oarmstrong/olint@v1
