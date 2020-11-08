@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+    # don't run on tags, there's no need.
     tags-ignore:
       - '*'
   pull_request:
