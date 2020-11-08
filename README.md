@@ -7,11 +7,14 @@ GitHub's `super-linter` is a project that intends to make that easier, `olint`
 works upon the same premise but improves the experience with some better design
 decisions and first-class local support.
 
+`olint` doesn't perform any linting itself but rather orchestrates running
+existing, well established linters with an opinionated set of rules for each.
+
 ## Background
 
 TODO
 
-- Motivation (opinionated, modular)
+- Motivation
 - Abstract deps
 - intellectual provenance see also
 
@@ -22,13 +25,15 @@ script will download all linters and dependencies itself.
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/oarmstrong/olint/master/olint.sh -o ~/.local/bin/olint
+$ which olint
+~/.local/bin/olint
 ```
 
 ## Usage
 
 The linter can be run locally on your project as well as via your CI system.
 GitHub actions has been documented here but this should be useable by other CI
-systems.
+systems as long as it allows for the running of docker containers.
 
 ### CLI
 
@@ -37,6 +42,11 @@ recognised the extension for in the current directory.
 
 ```bash
 $ olint
+[...]
+Linting: editorconfig
+Linting: markdown
+Linting: yaml
+[...]
 ```
 
 ### GitHub Actions
@@ -64,8 +74,7 @@ Please feel free to submit
 [issues](https://github.com/oarmstrong/olint/issues/new) for any bugs or
 feature requests. PRs with improvements are always welcome too!
 
-Alternatively you may send questions or patches to `<ollie@armstrong.io>` if
-you'd prefer.
+Alternatively you may contact `ollie@armstrong.io` if you'd prefer.
 
 Contributor guidelines are simply: don't be a dick. This project is welcoming
 of contributions from anyone, quality of code is the only thing to be judged or
